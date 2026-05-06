@@ -244,17 +244,13 @@
           <p class="mt-3 text-steel text-sm">She'll reach out within 24 hours to confirm a time. We're picking 100 dealers — quality over quantity.</p>
         </div>
 
-        <form id="beta-form" class="space-y-4"
-              action="https://api.web3forms.com/submit"
-              method="POST">
-          <!-- Web3Forms config (these fields are required by api.web3forms.com) -->
-          <input type="hidden" name="access_key" value="116a6347-1ca0-41ce-8b96-a12912efb769" />
-          <input type="hidden" name="subject" value="New Vintryx Beta Request" />
-          <input type="hidden" name="from_name" value="Vintryx Website" />
-          <!-- After submit, Web3Forms redirects the browser back to this URL. -->
-          <input type="hidden" name="redirect" value="https://vintryx.ai/?submitted=1" />
+        <form id="beta-form" class="space-y-4" novalidate>
+          <!-- Formsubmit.co config — these underscore-prefixed fields configure the email -->
+          <input type="hidden" name="_subject" value="New Vintryx Beta Request" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
           <!-- Honeypot — invisible to humans, bots fill it -->
-          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
 
           <div class="grid md:grid-cols-2 gap-4">
             <div>
@@ -308,15 +304,14 @@
   </footer>
 
   <script>
-    // Beta form uses a traditional HTML POST (no fetch / no CORS) because Web3Forms's
-    // free-tier API does not handle CORS preflight requests. The browser submits the
-    // form as a full-page navigation; Web3Forms processes it server-side and redirects
-    // back to vintryx.ai/?submitted=1. We detect that flag here and show a thank-you.
+    // Beta form posts via AJAX to Formsubmit.co — user never leaves vintryx.ai.
+    // Formsubmit handles CORS preflight properly, unlike Web3Forms's free tier.
     (function () {
       const form = document.getElementById('beta-form');
       if (!form) return;
       const button = document.getElementById('beta-submit');
       const status = document.getElementById('beta-status');
+      const ENDPOINT = 'https://formsubmit.co/ajax/hampsteadpreowned@gmail.com';
 
       const setStatus = (msg, isError) => {
         if (!status) return;
@@ -326,23 +321,39 @@
         status.innerHTML = msg;
       };
 
-      // Show thank-you on return from Web3Forms after a successful submit.
-      try {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('submitted') === '1') {
-          setStatus('<span class="text-blueglow">Got it.</span> Megan will reach out within 24 hours to schedule your call.', false);
-          // Scroll to the form so the message is visible.
-          form.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          // Clean up the URL so a refresh does not re-show the message.
-          history.replaceState({}, document.title, window.location.pathname);
-        }
-      } catch (e) { /* no-op */ }
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      // Light loading affordance while the browser navigates to Web3Forms.
-      form.addEventListener('submit', () => {
+        const originalText = button.textContent;
         button.disabled = true;
         button.textContent = 'Sending…';
         form.setAttribute('aria-busy', 'true');
+        setStatus('Sending your application…', false);
+
+        try {
+          const data = Object.fromEntries(new FormData(form));
+          const response = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const result = await response.json().catch(() => ({}));
+          if (response.ok && result && (result.success === 'true' || result.success === true)) {
+            setStatus('<span class="text-blueglow">Got it.</span> Megan will reach out within 24 hours to schedule your call.', false);
+            form.reset();
+          } else {
+            console.warn('[beta-form] submission rejected', { status: response.status });
+            setStatus('Something went wrong. Please try again in a moment, or email hampsteadpreowned@gmail.com directly.', true);
+          }
+        } catch (err) {
+          console.warn('[beta-form] network error during submission');
+          setStatus('Something went wrong. Please try again in a moment, or email hampsteadpreowned@gmail.com directly.', true);
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+          form.removeAttribute('aria-busy');
+        }
       });
     })();
   </script>
