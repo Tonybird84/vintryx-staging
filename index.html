@@ -335,18 +335,13 @@
         setStatus('Sending your application…', false);
 
         try {
-          // Web3Forms official client-side pattern: JSON body with explicit headers.
-          const formData = new FormData(form);
-          const object = Object.fromEntries(formData);
-          const json = JSON.stringify(object);
-
+          // Send as multipart/form-data (no explicit Content-Type) so the browser issues
+          // a "simple" CORS request and skips the preflight OPTIONS that Web3Forms's API
+          // does not respond to. Setting Content-Type: application/json triggers a
+          // preflight that fails — keeping this implicit avoids that path.
           const response = await fetch(ENDPOINT, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: json
+            body: new FormData(form)
           });
 
           const result = await response.json().catch(() => ({}));
