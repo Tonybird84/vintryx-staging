@@ -49,7 +49,7 @@
   <header class="relative z-20">
     <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2">
-        <img class="vintryx-nav-logo" src="/assets/vintryx-v-hero.png" alt="Vintryx V logo" />
+        <img class="vintryx-nav-logo" src="assets/vintryx-v-hero.png" alt="Vintryx V logo" />
         <span class="text-lg font-semibold tracking-[0.2em]">VINTRYX</span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm text-steel">
@@ -98,7 +98,7 @@
       <!-- V LOGO -->
       <div class="relative flex items-center justify-center">
         <div class="vintryx-v-stage">
-          <img class="vintryx-v-hero" src="/assets/vintryx-v-hero.png" alt="Vintryx V logo" />
+          <img class="vintryx-v-hero" src="assets/vintryx-v-hero.png" alt="Vintryx V logo" />
         </div>
       </div>
     </div>
@@ -244,42 +244,49 @@
           <p class="mt-3 text-steel text-sm">She'll reach out within 24 hours to confirm a time. We're picking 100 dealers — quality over quantity.</p>
         </div>
 
-        <form id="beta-form" class="space-y-4" onsubmit="return submitBeta(event)">
+        <form id="beta-form" class="space-y-4" novalidate>
+          <!-- Web3Forms config (these fields are required by api.web3forms.com) -->
+          <input type="hidden" name="access_key" value="116a6347-1ca0-41ce-8b96-a12912efb769" />
+          <input type="hidden" name="subject" value="New Vintryx Beta Request" />
+          <input type="hidden" name="from_name" value="Vintryx Website" />
+          <!-- Honeypot — invisible to humans, bots fill it -->
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
           <div class="grid md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Your Name</label>
-              <input required name="name" type="text"
+              <label for="beta-name" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Your Name</label>
+              <input id="beta-name" required name="name" type="text" autocomplete="name"
                 class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
             </div>
             <div>
-              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Dealership</label>
-              <input required name="dealership" type="text"
+              <label for="beta-dealership" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Dealership</label>
+              <input id="beta-dealership" required name="dealership" type="text" autocomplete="organization"
                 class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
             </div>
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Email</label>
-              <input required name="email" type="email"
+              <label for="beta-email" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Email</label>
+              <input id="beta-email" required name="email" type="email" autocomplete="email"
                 class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
             </div>
             <div>
-              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Phone</label>
-              <input required name="phone" type="tel"
+              <label for="beta-phone" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Phone</label>
+              <input id="beta-phone" required name="phone" type="tel" autocomplete="tel"
                 class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
             </div>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Biggest inventory pain right now</label>
-            <textarea name="pain" rows="3"
+            <label for="beta-pain" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Biggest inventory pain right now</label>
+            <textarea id="beta-pain" name="pain" rows="3"
               placeholder="One sentence is fine. e.g. 'too many aged units I can't get rid of'"
               class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition"></textarea>
           </div>
-          <button type="submit"
-            class="w-full mt-2 px-6 py-3.5 rounded-md bg-blueglow text-ink-3 font-semibold hover:bg-white transition shadow-glowlg">
+          <button id="beta-submit" type="submit"
+            class="w-full mt-2 px-6 py-3.5 rounded-md bg-blueglow text-ink-3 font-semibold hover:bg-white transition shadow-glowlg disabled:opacity-60 disabled:cursor-not-allowed">
             Book My Beta Call
           </button>
-          <p id="beta-status" class="text-center text-sm text-steel hidden"></p>
+          <p id="beta-status" class="text-center text-sm text-steel hidden" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -289,7 +296,7 @@
   <footer class="relative z-10 border-t border-blueglow/15 mt-12">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-steel/70">
       <div class="flex items-center gap-2">
-        <img class="vintryx-footer-logo" src="/assets/vintryx-v-hero.png" alt="Vintryx V logo" />
+        <img class="vintryx-footer-logo" src="assets/vintryx-v-hero.png" alt="Vintryx V logo" />
         <span class="tracking-[0.2em]">VINTRYX</span>
       </div>
       <div>© 2026 Vintryx · <a href="#" class="hover:text-white">Privacy</a> · <a href="#" class="hover:text-white">Terms</a></div>
@@ -297,24 +304,72 @@
   </footer>
 
   <script>
-    // Form handler — submits to local TODO until Web3Forms / Megan's calendar is wired up.
-    function submitBeta(e) {
-      e.preventDefault();
-      const f = e.target;
-      const data = Object.fromEntries(new FormData(f).entries());
+    // Beta form — submits to Web3Forms. No personal lead data is logged client-side.
+    (function () {
+      const form = document.getElementById('beta-form');
+      if (!form) return;
+      const button = document.getElementById('beta-submit');
       const status = document.getElementById('beta-status');
-      status.classList.remove('hidden');
-      status.textContent = "Sending…";
+      const ENDPOINT = 'https://api.web3forms.com/submit';
 
-      // TODO: replace with real submission endpoint (Web3Forms or Megan's Cal.com)
-      console.log('beta application:', data);
-      setTimeout(() => {
-        status.innerHTML = '<span class="text-blueglow">Got it.</span> Megan will reach out to ' + data.email + ' within 24 hours to schedule your call.';
-        f.reset();
-      }, 600);
+      const setStatus = (msg, isError) => {
+        status.classList.remove('hidden');
+        status.classList.toggle('text-red-400', !!isError);
+        status.classList.toggle('text-steel', !isError);
+        status.innerHTML = msg;
+      };
 
-      return false;
-    }
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Form has novalidate so browsers won't auto-block submit; run validation ourselves.
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const originalButtonText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Sending…';
+        form.setAttribute('aria-busy', 'true');
+        setStatus('Sending your application…', false);
+
+        try {
+          // Web3Forms official client-side pattern: JSON body with explicit headers.
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+
+          const response = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: json
+          });
+
+          const result = await response.json().catch(() => ({}));
+
+          if (response.ok && result && result.success) {
+            setStatus('<span class="text-blueglow">Got it.</span> Megan will reach out within 24 hours to schedule your call.', false);
+            form.reset();
+          } else {
+            // Generic, non-PII debug log so we can see what Web3Forms returned without exposing lead data.
+            console.warn('[beta-form] submission rejected by Web3Forms', { status: response.status });
+            setStatus('Something went wrong. Please try again in a moment.', true);
+          }
+        } catch (err) {
+          // Network/CORS error — generic, non-PII log only.
+          console.warn('[beta-form] network error during submission');
+          setStatus('Something went wrong. Please try again in a moment.', true);
+        } finally {
+          button.disabled = false;
+          button.textContent = originalButtonText;
+          form.removeAttribute('aria-busy');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
