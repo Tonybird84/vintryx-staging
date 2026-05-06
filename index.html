@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vintryx — Intelligence that runs the dealership</title>
+  <meta name="description" content="Vintryx is an AI operating system that flags what should already be gone, what only looks like demand, and what your process is quietly killing. We're picking 100 dealers to help us prove it." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            ink:       '#04081a',
+            'ink-2':   '#070f2a',
+            'ink-3':   '#0b1840',
+            blueglow:  '#3a82ff',
+            steel:     '#9fb3d8',
+            star:      '#cfe1ff'
+          },
+          boxShadow: {
+            glow:    '0 0 24px rgba(60,130,255,0.45), inset 0 0 0 1px rgba(120,170,255,0.45)',
+            glowlg:  '0 0 60px rgba(60,130,255,0.55)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles/site.css" />
+</head>
+
+<body class="bg-ink text-white antialiased font-sans">
+
+  <!-- ===== STARFIELD (animated, page-wide) ===== -->
+  <div class="starfield" aria-hidden="true">
+    <div class="stars stars-1"></div>
+    <div class="stars stars-2"></div>
+    <div class="stars stars-3"></div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <header class="relative z-20">
+    <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <img class="vintryx-nav-logo" src="/assets/vintryx-v-hero.png" alt="Vintryx V logo" />
+        <span class="text-lg font-semibold tracking-[0.2em]">VINTRYX</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-steel">
+        <a href="#platform" class="hover:text-white transition">Platform</a>
+        <a href="#product"  class="hover:text-white transition">Product</a>
+        <a href="#about"    class="hover:text-white transition">About</a>
+      </div>
+      <a href="#book"
+         class="inline-flex items-center px-5 py-2.5 rounded-md border border-blueglow/60 text-sm font-medium text-white hover:bg-blueglow/15 hover:border-blueglow transition shadow-glow">
+        Early Access
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative z-10 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 pt-10 md:pt-20 pb-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.02] tracking-tight">
+          Stop guessing.<br/><span class="text-blueglow">Start knowing.</span>
+        </h1>
+        <p class="mt-6 text-lg text-steel max-w-md leading-relaxed">
+          AI that evaluates every vehicle <span class="text-white">before you bid</span> — and tells you what will trap your capital. Other tools show you what's available. Vintryx tells you what's worth buying.
+        </p>
+        <p class="mt-4 text-sm text-blueglow font-medium">
+          We're picking 100 dealers to help us prove it.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="#book"
+             class="inline-flex items-center px-6 py-3 rounded-md bg-transparent border border-blueglow text-white font-medium hover:bg-blueglow/15 transition shadow-glow">
+            Book a Beta Call
+          </a>
+          <a href="#how" class="inline-flex items-center gap-2 text-steel hover:text-white transition">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-steel/40">
+              <svg viewBox="0 0 24 24" class="w-3 h-3 fill-current"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="text-sm">Watch How It Works</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- V LOGO -->
+      <div class="relative flex items-center justify-center">
+        <div class="vintryx-v-stage">
+          <img class="vintryx-v-hero" src="/assets/vintryx-v-hero.png" alt="Vintryx V logo" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO TO PILLARS ===== -->
+  <section id="platform" class="relative z-10">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">
+        Other tools show you what's <span class="text-steel">available.</span>
+      </h2>
+      <p class="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
+        Vintryx tells you what's <span class="text-blueglow">worth buying.</span>
+      </p>
+      <p class="mt-6 text-steel max-w-2xl mx-auto">
+        Every recommendation shows its reasoning. Every car gets the same six-stage treatment — before you ever raise your hand.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== THREE PROOF BRICKS ===== -->
+  <section class="relative z-10 mt-12 md:mt-16">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-5">
+
+      <!-- Brick 1: Six checkpoints -->
+      <div class="rounded-xl border border-blueglow/25 bg-ink-2/60 backdrop-blur-sm p-6 shadow-glow">
+        <div class="text-xs uppercase tracking-[0.2em] text-blueglow/80">Six Checkpoints</div>
+        <h3 class="mt-2 text-xl font-semibold">Between you and a bad car.</h3>
+        <p class="mt-3 text-sm text-steel leading-relaxed">
+          Auction economics. Profitability math. Hard gates. Carfax / AutoCheck verification. Demand-matching against your current lot. Full financial analysis with exit planning. Each stage talks to the others — a finding in stage four changes the math in stage six. No other tool does this.
+        </p>
+      </div>
+
+      <!-- Brick 2: Exit path -->
+      <div class="rounded-xl border border-blueglow/25 bg-ink-2/60 backdrop-blur-sm p-6 shadow-glow">
+        <div class="text-xs uppercase tracking-[0.2em] text-blueglow/80">Exit Path</div>
+        <h3 class="mt-2 text-xl font-semibold">Before you bid, not after.</h3>
+        <p class="mt-3 text-sm text-steel leading-relaxed">
+          You see two paths before you spend a dollar: what it retails for on your lot — turn time, margin estimate — and what you walk away with if retail doesn't work. Your ICO floor. Your MMR wholesale. Your capital-at-risk number. You know the downside before you commit.
+        </p>
+      </div>
+
+      <!-- Brick 3: Real money / ICO -->
+      <div class="rounded-xl border border-blueglow/25 bg-ink-2/60 backdrop-blur-sm p-6 shadow-glow">
+        <div class="text-xs uppercase tracking-[0.2em] text-blueglow/80">Real Money</div>
+        <h3 class="mt-2 text-xl font-semibold">A cash offer on every car you own.</h3>
+        <p class="mt-3 text-sm text-steel leading-relaxed">
+          Not an estimate. Not a market value. A real offer backed by real capital. If a car on your lot is retailing below its Vintryx ICO, you're losing money every day you hold it. The system tells you that — and what to do about it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE THESIS — Anthony's voice ===== -->
+  <section class="relative z-10 mt-24 md:mt-32">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="rounded-2xl border border-blueglow/35 bg-gradient-to-br from-ink-2/80 to-ink-3/40 backdrop-blur-md p-8 md:p-12">
+        <div class="text-xs uppercase tracking-[0.25em] text-blueglow/80">The Thesis</div>
+        <p class="mt-4 text-2xl md:text-3xl font-semibold leading-tight tracking-tight">
+          Auction condition reports are built to <span class="text-steel">sell you the car.</span><br/>
+          Ours is built to <span class="text-blueglow">tell you the truth.</span>
+        </p>
+        <p class="mt-6 text-steel leading-relaxed">
+          I bought cars for fifteen years off condition reports designed to sell me, not protect me. So we built a CR that tells the truth — AI-driven, image-analyzed, history-verified, scored independently from anything the auction hands you. When the auction says <span class="text-white">"clean"</span> and the data says <span class="text-blueglow">"suspicious"</span> — you'll know.
+        </p>
+        <div class="mt-8 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blueglow/40 to-blueglow/10 border border-blueglow/40 flex items-center justify-center text-sm font-semibold">A</div>
+          <div>
+            <div class="text-sm font-semibold">Anthony</div>
+            <div class="text-xs text-steel">Founder · 15 years independent dealer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS / WHAT BETA MEANS ===== -->
+  <section id="how" class="relative z-10 mt-20 md:mt-28">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="rounded-2xl border border-blueglow/30 bg-ink-2/50 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs uppercase tracking-[0.2em] text-blueglow/80">What the Beta Looks Like</div>
+        <h2 class="mt-3 text-2xl md:text-3xl font-semibold leading-tight">
+          A 30-minute call. A real lot. A real answer.
+        </h2>
+        <ol class="mt-8 space-y-5 text-steel">
+          <li class="flex gap-4">
+            <span class="flex-none w-7 h-7 rounded-full border border-blueglow/60 text-blueglow text-sm flex items-center justify-center">1</span>
+            <div><span class="text-white font-medium">Book the call.</span> 30 minutes with Megan. No deck, no demo theater — just questions about how you actually run your store.</div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-none w-7 h-7 rounded-full border border-blueglow/60 text-blueglow text-sm flex items-center justify-center">2</span>
+            <div><span class="text-white font-medium">If we're a fit, you're in.</span> We hand-pick 50 to 100 dealers. We look at your real lot. You give us real feedback.</div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-none w-7 h-7 rounded-full border border-blueglow/60 text-blueglow text-sm flex items-center justify-center">3</span>
+            <div><span class="text-white font-medium">You help shape what we build.</span> Beta dealers get founding pricing, direct line to the team, and the answers we find on your lot — first.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO YOU'RE MEETING ===== -->
+  <section id="about" class="relative z-10 mt-20 md:mt-28">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <div class="text-xs uppercase tracking-[0.2em] text-blueglow/80">Who You're Meeting</div>
+        <h2 class="mt-3 text-2xl md:text-3xl font-semibold">A dealer-built team.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="text-center p-6 rounded-xl border border-blueglow/20 bg-ink-2/40">
+          <div class="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-blueglow/40 to-blueglow/10 border border-blueglow/40 flex items-center justify-center text-3xl font-semibold">M</div>
+          <div class="mt-4 font-semibold">Megan</div>
+          <div class="text-sm text-steel">Beta Lead</div>
+          <p class="mt-3 text-xs text-steel/80">Runs every beta intake call. Decides who gets in.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl border border-blueglow/20 bg-ink-2/40">
+          <div class="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-blueglow/40 to-blueglow/10 border border-blueglow/40 flex items-center justify-center text-3xl font-semibold">A</div>
+          <div class="mt-4 font-semibold">Anthony</div>
+          <div class="text-sm text-steel">Founder</div>
+          <p class="mt-3 text-xs text-steel/80">Independent dealer. Built Vintryx from his own lot.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl border border-blueglow/20 bg-ink-2/40">
+          <div class="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-blueglow/40 to-blueglow/10 border border-blueglow/40 flex items-center justify-center text-3xl font-semibold">J</div>
+          <div class="mt-4 font-semibold">Josh</div>
+          <div class="text-sm text-steel">Voice of the Lot</div>
+          <p class="mt-3 text-xs text-steel/80">Podcast host. Talks to dealers every week. <span class="text-blueglow">Listen — coming soon.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOK YOUR BETA CALL FORM ===== -->
+  <section id="book" class="relative z-10 mt-24 md:mt-32 mb-24">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="rounded-2xl border border-blueglow/40 bg-ink-2/70 backdrop-blur-md p-8 md:p-10 shadow-glowlg">
+        <div class="text-center mb-8">
+          <div class="text-xs uppercase tracking-[0.2em] text-blueglow/80">Apply to the Beta</div>
+          <h2 class="mt-3 text-2xl md:text-3xl font-semibold">Book your call with Megan.</h2>
+          <p class="mt-3 text-steel text-sm">She'll reach out within 24 hours to confirm a time. We're picking 100 dealers — quality over quantity.</p>
+        </div>
+
+        <form id="beta-form" class="space-y-4" onsubmit="return submitBeta(event)">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Your Name</label>
+              <input required name="name" type="text"
+                class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Dealership</label>
+              <input required name="dealership" type="text"
+                class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Email</label>
+              <input required name="email" type="email"
+                class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Phone</label>
+              <input required name="phone" type="tel"
+                class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-steel mb-1.5">Biggest inventory pain right now</label>
+            <textarea name="pain" rows="3"
+              placeholder="One sentence is fine. e.g. 'too many aged units I can't get rid of'"
+              class="w-full bg-ink/80 border border-blueglow/30 rounded-md px-3.5 py-2.5 text-sm focus:border-blueglow focus:outline-none transition"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full mt-2 px-6 py-3.5 rounded-md bg-blueglow text-ink-3 font-semibold hover:bg-white transition shadow-glowlg">
+            Book My Beta Call
+          </button>
+          <p id="beta-status" class="text-center text-sm text-steel hidden"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="relative z-10 border-t border-blueglow/15 mt-12">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-steel/70">
+      <div class="flex items-center gap-2">
+        <img class="vintryx-footer-logo" src="/assets/vintryx-v-hero.png" alt="Vintryx V logo" />
+        <span class="tracking-[0.2em]">VINTRYX</span>
+      </div>
+      <div>© 2026 Vintryx · <a href="#" class="hover:text-white">Privacy</a> · <a href="#" class="hover:text-white">Terms</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Form handler — submits to local TODO until Web3Forms / Megan's calendar is wired up.
+    function submitBeta(e) {
+      e.preventDefault();
+      const f = e.target;
+      const data = Object.fromEntries(new FormData(f).entries());
+      const status = document.getElementById('beta-status');
+      status.classList.remove('hidden');
+      status.textContent = "Sending…";
+
+      // TODO: replace with real submission endpoint (Web3Forms or Megan's Cal.com)
+      console.log('beta application:', data);
+      setTimeout(() => {
+        status.innerHTML = '<span class="text-blueglow">Got it.</span> Megan will reach out to ' + data.email + ' within 24 hours to schedule your call.';
+        f.reset();
+      }, 600);
+
+      return false;
+    }
+  </script>
+</body>
+</html>
