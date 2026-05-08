@@ -1,7 +1,32 @@
+# --- Secrets / credentials (NEVER commit) ---
 .env
 .env.*
 !.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.json
+credentials.json
+tokens.txt
+
+# --- Captured data with auth headers / cookies ---
+network-capture.json
+network-capture-*.json
+
+# --- Build / dependency output ---
 node_modules/
 dist/
+build/
+.next/
+
+# --- Local artefacts (screenshots, scan reports, profiles) ---
 screenshots/
+playwright-profile/
+security-reports/
+
+# --- Logs / OS noise ---
+*.log
 .DS_Store
+Thumbs.db
+.vscode/settings.json
